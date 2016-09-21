@@ -4,6 +4,8 @@ from __future__ import unicode_literals
 import re
 from decimal import Decimal
 
+from vat_moss.rates import BY_COUNTRY
+
 try:
     # Python 2
     str_cls = unicode
@@ -12,6 +14,30 @@ except NameError:
     str_cls = str
 
 from . import rates
+
+
+def calculate_rate_french(country_code, postal_code, city, vat_number, service=True):
+    """
+
+    :param country_code:
+    :param postal_code:
+    :param city:
+    :param vat_number:
+    :param service:
+    :return:
+    """
+    if not service:
+        raise NotImplemented('Not Implemented')
+
+    if country_code not in BY_COUNTRY:
+        return Decimal('0.0'), country_code, None
+    if len(vat_number) > 0:
+        if country_code == 'FR':
+            return calculate_rate(country_code, postal_code, city)
+        else:
+            return Decimal('0.0'), country_code, None
+    else:
+        return calculate_rate(country_code, postal_code, city)
 
 
 def calculate_rate(country_code, postal_code, city):

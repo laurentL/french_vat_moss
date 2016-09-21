@@ -147,3 +147,25 @@ class BillingAddressTests(unittest.TestCase):
     @data('invalid_addresses')
     def calculate_rate_invalid(self, country_code, postal_code, city):
         self.assertRaises(ValueError, vat_moss.billing_address.calculate_rate, country_code, postal_code, city)
+
+    @staticmethod
+    def addresses_french():
+        return (
+                   # Example user input                                # Expected result
+                   ('FR', '75016', 'Paris','FR57821970837', Decimal('0.20'), 'FR', None),
+                   ('FR', '75016', 'Paris','', Decimal('0.20'), 'FR', None),
+                   ('FR', '97400', 'Saint-Denis','', Decimal('0.085'), 'FR', 'La Réunion'),
+                   ('BE', '4 1040', 'ETTERBEEK', 'BE0844044609', Decimal('0.0'), 'BE', None),
+                   ('BE', '4 1040', 'ETTERBEEK', '', Decimal('0.21'), 'BE', None),
+                   ('CZ', '2', 'NOVÝ HRÁDEK', 'CZ15046575', Decimal('0.0'), 'CZ', None),
+                   ('CZ', '2', 'NOVÝ HRÁDEK', '', Decimal('0.21'), 'CZ', None),
+        )
+
+    @data('addresses_french')
+    def calculate_rate_french(self, country_code, postal_code, city, vat_number,expected_rate, expected_country_code, expected_exception_name):
+        result = vat_moss.billing_address.calculate_rate_french(country_code, postal_code, city, vat_number)
+        result_rate, result_country_code, result_exception_name = result
+
+        self.assertEqual(result_rate, expected_rate, msg='%s:%s %s =!%s ' % (country_code, postal_code, result_rate, expected_rate))
+        self.assertEqual(result_country_code, expected_country_code)
+        self.assertEqual(result_exception_name, expected_exception_name)
