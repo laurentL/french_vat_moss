@@ -101,7 +101,15 @@ BY_COUNTRY = {
         'rate': Decimal('0.24')
     },
     'FR': {  # France
-        'rate': Decimal('0.20')
+        'rate': Decimal('0.20'),
+        'exceptions': {
+            # Dom
+            "Guadeloupe": Decimal('0.085'),
+            "Martinique": Decimal('0.085'),
+            "Guyane": Decimal('0.085'),
+            "La Réunion": Decimal('0.085'),
+            "Mayotte": Decimal('0.085'),
+        }
     },
     'GB': {  # United Kingdom
         'rate': Decimal('0.20'),

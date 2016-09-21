@@ -67,7 +67,7 @@ class IdTests(unittest.TestCase):
         try:
             result = vat_moss.id.validate(vat_id)
             if result:
-                country_code, normalized_vat_id, name = result
+                country_code, normalized_vat_id, name, address = result
                 self.assertEqual(expected_country_code, country_code)
                 self.assertEqual(expected_normalized_vat_id, normalized_vat_id)
             else:

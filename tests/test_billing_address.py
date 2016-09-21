@@ -60,6 +60,7 @@ class BillingAddressTests(unittest.TestCase):
             ('FI', '00140', 'Helsinki', Decimal('0.24'), 'FI', None),
 
             ('FR', '75016', 'Paris', Decimal('0.20'), 'FR', None),
+            ('FR', '97400', 'Saint-Denis', Decimal('0.085'), 'FR', 'La Réunion'),
 
             ('GB', 'BFP O57', 'Akrotiri', Decimal('0.19'), 'CY', None),
             ('GB', 'BFP O58', 'Dhekelia', Decimal('0.19'), 'CY', None),

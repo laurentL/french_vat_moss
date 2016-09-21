@@ -128,6 +128,28 @@ GEOIP2_EXCEPTIONS = {
             'definitive': False
         }
     },
+    'FR': {
+        'Guadeloupe': {
+            'name': 'Guadeloupe',
+            'definitive': True
+        },
+        'Martinique': {
+            'name': 'Martinique',
+            'definitive': True
+        },
+        'Guyane': {
+            'name': 'Guyane',
+            'definitive': True
+        },
+        'La Réunion': {
+            'name': 'La Réunion',
+            'definitive': True
+        },
+        'Mayotte': {
+            'name': 'Mayotte',
+            'definitive': True
+        }
+    },
     'ES': {
         'canary islands': {
             'name': 'Canary Islands',

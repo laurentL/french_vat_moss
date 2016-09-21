@@ -1,5 +1,5 @@
-# vat_moss
-
+# french_vat_moss
+This is a fork of vat_moss https://github.com/wbond/vat_moss-python
 A Python library for VAT MOSS tasks required of non-EU companies selling
 software to customers in the EU and Norway. Functionality includes:
 

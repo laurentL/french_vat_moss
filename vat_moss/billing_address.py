@@ -155,6 +155,28 @@ POSTAL_CODE_EXCEPTIONS = {
             'name': 'Heligoland'
         }
     },
+    'FR': {
+        '^971\\d{2}$': {
+            'country_code': 'FR',
+            'name': 'Guadeloupe'
+        },
+        '^972\\d{2}$': {
+            'country_code': 'FR',
+            'name': 'Martinique'
+        },
+        '^973\\d{2}$': {
+            'country_code': 'FR',
+            'name': 'Guyane'
+        },
+        '^974\\d{2}$': {
+            'country_code': 'FR',
+            'name': 'La Réunion'
+        },
+        '^975\\d{2}$': {
+            'country_code': 'FR',
+            'name': 'Mayotte'
+        },
+    },
     'ES': {
         '^(5100[1-5]|5107[0-1]|51081)$': {
             'country_code': 'ES',

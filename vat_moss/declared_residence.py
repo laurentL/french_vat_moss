@@ -1379,6 +1379,7 @@ EXCEPTIONS_BY_COUNTRY = {
     'AT': ['Jungholz', 'Mittelberg'],
     'DE': ['Büsingen am Hochrhein', 'Heligoland'],
     'ES': ['Canary Islands', 'Ceuta', 'Melilla'],
+    'FR': ['Guadeloupe', 'Martinique', 'Guyane', 'La Réunion', 'Mayotte'],
     'GB': ['Akrotiri', 'Dhekelia'],
     'GR': ['Mount Athos'],
     'IT': ["Campione d'Italia", 'Livigno'],

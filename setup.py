@@ -2,16 +2,18 @@ from setuptools import setup, find_packages
 import vat_moss
 
 setup(
-    name='vat_moss',
+    name='french_vat_moss',
     version=vat_moss.__version__,
 
     description='Tools for VAT MOSS and Norway VAT on digital services.',
-    long_description='Docs for this project are maintained at https://github.com/wbond/vat_moss-python#readme.',
+    long_description='Fork of https://github.com/wbond/vat_moss-python'
+                     'Docs for this project are maintained at https://github.com/wbond/vat_moss-python#readme.',
+
 
     url='https://github.com/wbond/vat_moss-python',
 
-    author='wbond',
-    author_email='will@wbond.net',
+    author='Labatut Laurent',
+    author_email='laurent@labatut.net',
 
     license='MIT',
 
@@ -27,8 +29,8 @@ setup(
         'Programming Language :: Python :: 3.4',
     ],
 
-    keywords='vat',
+    keywords='french vat',
 
     packages=find_packages(exclude=['tests*']),
-    install_requires=['money']
+    install_requires=['money', 'pythonsol']
 )
