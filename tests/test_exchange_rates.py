@@ -4,17 +4,17 @@ from __future__ import unicode_literals
 try:
     # Python 2
     str_cls = unicode
-except (NameError):
+except NameError:
     # Python 3
     str_cls = str
 
 from decimal import Decimal
 import unittest
-from .unittest_data import DataDecorator, data
+from .unittest_data import data_decorator, data
 import vat_moss.exchange_rates
 
 
-@DataDecorator
+@data_decorator
 class ExchangeRatesTests(unittest.TestCase):
 
     def test_fetch(self):
@@ -60,5 +60,5 @@ class ExchangeRatesTests(unittest.TestCase):
 
     @data('currency_formats')
     def format(self, code, amount, expected_result):
-        result = vat_moss.exchange_rates.format(Decimal(amount), code)
+        result = vat_moss.exchange_rates.amount_normalize(Decimal(amount), code)
         self.assertEqual(expected_result, result)

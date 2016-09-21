@@ -3,10 +3,12 @@ from __future__ import unicode_literals
 
 try:
     # Python 3
+    # noinspection PyCompatibility
     from urllib.error import URLError
     str_cls = str
-except (ImportError):
+except ImportError:
     # Python 2
+    # noinspection PyCompatibility
     from urllib2 import URLError
     str_cls = unicode
 

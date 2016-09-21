@@ -6,7 +6,7 @@ from decimal import Decimal
 try:
     # Python 2
     str_cls = unicode
-except (NameError):
+except NameError:
     # Python 3
     str_cls = str
 
@@ -59,12 +59,12 @@ def calculate_rate(country_code, subdivision, city, address_country_code=None, a
     city = city.lower()
 
     if country_code not in rates.BY_COUNTRY:
-        return (Decimal('0.0'), country_code, None)
+        return Decimal('0.0'), country_code, None
 
     country_default = rates.BY_COUNTRY[country_code]['rate']
 
     if country_code not in GEOIP2_EXCEPTIONS:
-        return (country_default, country_code, None)
+        return country_default, country_code, None
 
     exceptions = GEOIP2_EXCEPTIONS[country_code]
     for matcher in exceptions:
@@ -94,9 +94,9 @@ def calculate_rate(country_code, subdivision, city, address_country_code=None, a
                 continue
 
         rate = rates.BY_COUNTRY[country_code]['exceptions'][exception_name]
-        return (rate, country_code, exception_name)
+        return rate, country_code, exception_name
 
-    return (country_default, country_code, None)
+    return country_default, country_code, None
 
 
 # A dictionary that maps information from the GeoLite2 databases to VAT

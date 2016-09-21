@@ -7,16 +7,18 @@ from decimal import Decimal
 
 try:
     # Python 3
+    # noinspection PyCompatibility
     from urllib.request import urlopen
     str_cls = str
-except (ImportError):
+except ImportError:
     # Python 2
+    # noinspection PyCompatibility
     from urllib2 import urlopen
     str_cls = unicode
 
 try:
     from money import xrates
-except (ImportError):
+except ImportError:
     xrates = None
 
 from .errors import WebServiceError
@@ -155,7 +157,7 @@ def fetch():
         rate = currency_element.attrib.get('rate')
         rates[code] = Decimal(rate)
 
-    return (date, rates)
+    return date, rates
 
 
 def setup_xrates(base, rates):
@@ -177,7 +179,7 @@ def setup_xrates(base, rates):
         xrates.setrate(code, value)
 
 
-def format(amount, currency=None):
+def amount_normalize(amount, currency=None):
     """
     Formats a decimal or Money object into an unambiguous string representation
     for the purpose of invoices in English.

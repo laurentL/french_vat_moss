@@ -6,7 +6,7 @@ from decimal import Decimal
 try:
     # Python 2
     str_cls = unicode
-except (NameError):
+except NameError:
     # Python 3
     str_cls = str
 
@@ -41,12 +41,12 @@ def calculate_rate(country_code, exception_name):
     country_code = country_code.upper()
 
     if country_code not in rates.BY_COUNTRY:
-        return (Decimal('0.0'), country_code, None)
+        return Decimal('0.0'), country_code, None
 
     country_info = rates.BY_COUNTRY[country_code]
 
     if not exception_name:
-        return (country_info['rate'], country_code, None)
+        return country_info['rate'], country_code, None
 
     if exception_name not in country_info['exceptions']:
         raise ValueError('"%s" is not a valid exception for %s' % (exception_name, country_code))
@@ -59,7 +59,7 @@ def calculate_rate(country_code, exception_name):
         # that map to the standard country rate. The country code and exception
         # name need to be changed in addition to gettting a special rate.
         rate, country_code, exception_name = rate_info
-    return (rate, country_code, exception_name)
+    return rate, country_code, exception_name
 
 
 def exceptions_by_country(country_code):

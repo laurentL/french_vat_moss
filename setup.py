@@ -1,7 +1,6 @@
 from setuptools import setup, find_packages
 import vat_moss
 
-
 setup(
     name='vat_moss',
     version=vat_moss.__version__,
@@ -30,5 +29,6 @@ setup(
 
     keywords='vat',
 
-    packages=find_packages(exclude=['tests*'])
+    packages=find_packages(exclude=['tests*']),
+    install_requires=['money']
 )

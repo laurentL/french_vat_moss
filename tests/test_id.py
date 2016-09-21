@@ -2,12 +2,12 @@
 from __future__ import unicode_literals
 
 import unittest
-from .unittest_data import DataDecorator, data
+from .unittest_data import data_decorator, data
 import vat_moss.id
 import vat_moss.errors
 
 
-@DataDecorator
+@data_decorator
 class IdTests(unittest.TestCase):
 
     @staticmethod
@@ -27,10 +27,10 @@ class IdTests(unittest.TestCase):
             ('gr', 'GR094259216',      'EL094259216',    'GR'),
             ('es', 'ES B58378431',     'ESB58378431',    'ES'),
             ('fi', 'FI- 2077474-0',    'FI20774740',     'FI'),
-            ('fr', 'FR 27 514868827',  'FR27514868827',  'FR'),
+            ('fr', 'FR 57 821970837',  'FR57821970837',  'FR'),
             ('gb', 'GB 365684514',     'GB365684514',    'GB'),
             ('hr', 'HR76639357285',    'HR76639357285',  'HR'),
-            ('hu', 'HU24166575',       'HU24166575',     'HU'),
+            ('hu', 'HU 12892312',      'HU12892312',     'HU'),
             ('ie', 'IE6388047V',       'IE6388047V',     'IE'),
             ('it', 'IT05175700482',    'IT05175700482',  'IT'),
             ('lt', 'LT120212314',      'LT120212314',    'LT'),
@@ -56,6 +56,7 @@ class IdTests(unittest.TestCase):
             ('AT1',)
         )
 
+    # noinspection PyUnusedLocal
     @data('valid_ids', True)
     def normalize(self, vat_id, expected_normalized_vat_id, expected_country_code):
         result = vat_moss.id.normalize(vat_id)
@@ -71,7 +72,7 @@ class IdTests(unittest.TestCase):
                 self.assertEqual(expected_normalized_vat_id, normalized_vat_id)
             else:
                 self.assertEqual(expected_normalized_vat_id, result)
-        except (vat_moss.errors.WebServiceUnavailableError):
+        except vat_moss.errors.WebServiceUnavailableError:
             return unittest.skip('VIES webservice unavailable')
 
     @data('invalid_ids')

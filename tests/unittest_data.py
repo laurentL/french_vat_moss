@@ -28,31 +28,35 @@ def data(provider_method, first_param_name_suffix=False):
         test_func._provider_method = provider_method
         test_func._provider_name_suffix = first_param_name_suffix
         return test_func
+
     return test_func_decorator
 
 
-def DataDecorator(cls):
+def data_decorator(cls):
     """
     A class decorator that works with the @provider decorator to generate test
     method from a data provider
     """
 
-    def generate_test_func(name, original_function, num, params):
+    # noinspection PyProtectedMember
+    def generate_test_func(m_name, original_function, m_num, m_params):
         if original_function._provider_name_suffix:
-            data_name = params[0]
-            params = params[1:]
+            data_name = m_params[0]
+            m_params = m_params[1:]
         else:
-            data_name = num
-        expanded_name = 'test_%s_%s' % (name, data_name)
+            data_name = m_num
+        expanded_name = 'test_%s_%s' % (m_name, data_name)
         # We used expanded variable names here since this line is present in
         # backtraces that are generated from test failures.
-        generated_test_function = lambda self: original_function(self, *params)
+        # noinspection PyPep8
+        generated_test_function = lambda self: original_function(self, *m_params)
         setattr(cls, expanded_name, generated_test_function)
 
     for name in dir(cls):
         func = getattr(cls, name)
         if hasattr(func, '_provider_method'):
             num = 1
+            # noinspection PyProtectedMember
             for params in getattr(cls, func._provider_method)():
                 generate_test_func(name, func, num, params)
                 num += 1

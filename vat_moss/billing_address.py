@@ -7,7 +7,7 @@ from decimal import Decimal
 try:
     # Python 2
     str_cls = unicode
-except (NameError):
+except NameError:
     # Python 3
     str_cls = str
 
@@ -65,12 +65,12 @@ def calculate_rate(country_code, postal_code, city):
     city = city.lower().strip()
 
     if country_code not in rates.BY_COUNTRY and country_code not in POSTAL_CODE_EXCEPTIONS:
-        return (Decimal('0.0'), country_code, None)
+        return Decimal('0.0'), country_code, None
 
     country_default = rates.BY_COUNTRY.get(country_code, {'rate': Decimal('0.0')})['rate']
 
     if country_code not in POSTAL_CODE_EXCEPTIONS:
-        return (country_default, country_code, None)
+        return country_default, country_code, None
 
     exceptions = POSTAL_CODE_EXCEPTIONS[country_code]
     for matcher in exceptions:
@@ -99,9 +99,9 @@ def calculate_rate(country_code, postal_code, city):
         mapped_name = exceptions[matcher]['name']
 
         rate = rates.BY_COUNTRY[mapped_country]['exceptions'][mapped_name]
-        return (rate, mapped_country, mapped_name)
+        return rate, mapped_country, mapped_name
 
-    return (country_default, country_code, None)
+    return country_default, country_code, None
 
 
 # A dictionary of countries, each being dictionary with keys that are either

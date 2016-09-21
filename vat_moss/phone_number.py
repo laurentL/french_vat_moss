@@ -7,7 +7,7 @@ from decimal import Decimal
 try:
     # Python 2
     str_cls = unicode
-except (NameError):
+except NameError:
     # Python 3
     str_cls = str
 
@@ -80,12 +80,12 @@ def calculate_rate(phone_number, address_country_code=None, address_exception=No
                     continue
 
             rate = rates.BY_COUNTRY[mapped_country]['exceptions'][mapped_name]
-            return (rate, mapped_country, mapped_name)
+            return rate, mapped_country, mapped_name
 
     if country_code not in rates.BY_COUNTRY:
-        return (Decimal('0.0'), country_code, None)
+        return Decimal('0.0'), country_code, None
 
-    return (rates.BY_COUNTRY[country_code]['rate'], country_code, None)
+    return rates.BY_COUNTRY[country_code]['rate'], country_code, None
 
 
 def _lookup_country_code(phone_number):
@@ -130,6 +130,7 @@ def _lookup_country_code(phone_number):
 # The values are a list so that more specific regexes will be matched first.
 # This is necessary since sometimes multiple countries use the same
 # international calling code prefix.
+# noinspection PyPep8
 CALLING_CODE_MAPPING = {
     '1': [
         {
@@ -1146,7 +1147,6 @@ CALLING_CODE_MAPPING = {
         }
     ]
 }
-
 
 # The country_code key is included with these exceptions since some cities have
 # phone service from more than one country.
