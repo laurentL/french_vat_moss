@@ -10,7 +10,7 @@ setup(
                      'Docs for this project are maintained at https://github.com/wbond/vat_moss-python#readme.',
 
 
-    url='https://github.com/wbond/vat_moss-python',
+    url='https://github.com/laurentL/vat_moss-python',
 
     author='Labatut Laurent',
     author_email='laurent@labatut.net',
