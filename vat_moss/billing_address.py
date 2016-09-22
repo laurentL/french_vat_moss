@@ -31,7 +31,7 @@ def calculate_rate_french(country_code, postal_code, city, vat_number, service=T
 
     if country_code not in BY_COUNTRY:
         return Decimal('0.0'), country_code, None
-    if len(vat_number) > 0:
+    if vat_number is not None and len(vat_number) > 0:
         if country_code == 'FR':
             return calculate_rate(country_code, postal_code, city)
         else:

@@ -156,9 +156,9 @@ class BillingAddressTests(unittest.TestCase):
                    ('FR', '75016', 'Paris','', Decimal('0.20'), 'FR', None),
                    ('FR', '97400', 'Saint-Denis','', Decimal('0.085'), 'FR', 'La Réunion'),
                    ('BE', '4 1040', 'ETTERBEEK', 'BE0844044609', Decimal('0.0'), 'BE', None),
-                   ('BE', '4 1040', 'ETTERBEEK', '', Decimal('0.21'), 'BE', None),
+                   ('BE', '4 1041', 'ETTERBEEK', '', Decimal('0.21'), 'BE', None),
                    ('CZ', '2', 'NOVÝ HRÁDEK', 'CZ15046575', Decimal('0.0'), 'CZ', None),
-                   ('CZ', '2', 'NOVÝ HRÁDEK', '', Decimal('0.21'), 'CZ', None),
+                   ('CZ', '3', 'NOVÝ HRÁDEK', '', Decimal('0.21'), 'CZ', None),
         )
 
     @data('addresses_french')
